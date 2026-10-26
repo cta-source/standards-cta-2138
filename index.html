@@ -1,0 +1,785 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 37.4.1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+    
+    
+    
+<link rel="icon" type="image/x-icon" href="https://cta.tech/favicon.ico">
+    
+<style>
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: center;
+    }
+    th {
+      text-align: center;
+    }
+    
+</style>
+  
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(:where(#toc>h2,#abstract>h2,#sotd>h2,.head>h2)):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(:where(#toch2))+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.8;text-decoration:none}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§"}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h2,h3)+a.self-link::before{color:var(--heading-text)}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
+</style>
+<meta name="color-scheme" content="light">
+<title>Deprecated Technologies (CTA-2138)</title>
+<meta name="description" content="This document enumerates technologies that should not be used in connected devices either because they are formally Deprecated by Acknowledged Authorities; or because they are broadly considered insecure but have not been formally Deprecated by an Acknowledged Authority.
+        This standard was developed by the Consumer Technology Association’s R14 Cybersecurity and Privacy Management Committee.
+        This is an approved and published CTA standard document. All CTA standards are available at CTA.tech/Standards.">
+<style>
+var:hover{text-decoration:underline;cursor:pointer}
+var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
+@media (prefers-color-scheme:dark){
+var.respec-hl{filter:saturate(.9) brightness(.9)}
+}
+var.respec-hl-c1{--bg-color:#f4d200}
+var.respec-hl-c2{--bg-color:#ff87a2}
+var.respec-hl-c3{--bg-color:#96e885}
+var.respec-hl-c4{--bg-color:#3eeed2}
+var.respec-hl-c5{--bg-color:#eacfb6}
+var.respec-hl-c6{--bg-color:#82ddff}
+var.respec-hl-c7{--bg-color:#ffbcf2}
+@media print{
+var.respec-hl{background:0 0;color:#000;box-shadow:unset}
+}
+</style>
+<style>
+var[data-type]{position:relative}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "publishDate": "2025-08-26",
+  "latestVersion": "https://www.cta.tech/standards/cta-2138/",
+  "editors": [
+    {
+      "name": "Alexandra Blasgen",
+      "company": "Consumer Technology Association",
+      "mailto": "ablasgen@CTA.tech?subject=Inquiry regarding CTA-2138 Deprecated Technologies",
+      "url": "mailto:ablasgen@CTA.tech?subject=Inquiry regarding CTA-2138 Deprecated Technologies"
+    }
+  ],
+  "maxTocLevel": 3,
+  "edDraftURI": "",
+  "logos": [
+    {
+      "src": "https://cdn.cta.tech/cta/media/media/home/cta-logo.png",
+      "alt": "Consumer Technology Association (CTA)",
+      "height": 65,
+      "width": 100,
+      "id": "cta-logo",
+      "url": "https://cta.tech/"
+    }
+  ],
+  "publishISODate": "2025-08-26T00:00:00.000Z",
+  "generatedSubtitle": "26 August 2025"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
+
+  <body class="h-entry informative"><div class="head">
+    <p class="logos"><a class="logo" href="https://cta.tech/"><img crossorigin="" alt="Consumer Technology Association (CTA)" height="65" id="cta-logo" src="https://cdn.cta.tech/cta/media/media/home/cta-logo.png" width="100">
+  </a></p>
+    <h1 id="title" class="title">Deprecated Technologies (CTA-2138)</h1> 
+    <p id="w3c-state"> <time class="dt-published" datetime="2025-08-26">26 August 2025</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        
+        <dt>Latest published version:</dt><dd>
+                  <a href="https://www.cta.tech/standards/cta-2138/">https://www.cta.tech/standards/cta-2138/</a>
+                </dd>
+        
+        
+        
+        
+        
+        
+        
+        <dt>
+                  Editor:
+                </dt><dd class="editor p-author h-card vcard">
+    <a class="ed_mailto u-email email p-name" href="mailto:ablasgen@CTA.tech?subject=Inquiry regarding CTA-2138 Deprecated Technologies">Alexandra Blasgen</a> (<span class="p-org org h-org">Consumer Technology Association</span>)
+  </dd>
+        
+        
+        
+        
+        
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+
+<strong>NOTICE</strong><br>Consumer Technology Association (CTA)™ Standards, Bulletins and other technical publications are designed to serve the public interest through eliminating misunderstandings between manufacturers and purchasers, facilitating interchangeability and improvement of products, and assisting the reader in selecting and obtaining with minimum delay the proper product for the reader’s particular need. Existence of such Standards, Bulletins and other technical publications shall not in any respect preclude any member or nonmember of the Consumer Technology Association from manufacturing or selling products not conforming to such Standards, Bulletins or other technical publications, nor shall the existence of such Standards, Bulletins and other technical publications preclude their voluntary use by those other than Consumer Technology Association members, whether the standard is to be used either domestically or internationally.<br><br>
+<i>Standards and Publications are adopted by CTA in accordance with American National Standards Institute (ANSI) patent policy. By such action, neither CTA nor ANSI assumes any liability to any patent owner, nor does either organization assume any obligation whatever to parties adopting the Standard or Publication. CTA and ANSI take no position with respect to the validity of any Essential Patent Claim relating to this standard. Neither CTA nor ANSI is responsible for identifying patents for which a license may be required in order to comply with any CTA or ANS standard.</i><br><br>
+This document does not purport to address all safety problems associated with its use or all applicable regulatory requirements. It is the responsibility of the user of this document to establish appropriate safety and health practices and to determine the applicability of regulatory limitations before its use.<br><br>
+This document is copyrighted by the Consumer Technology Association (CTA)® and may not be reproduced, in whole or part, without written permission. Federal copyright law prohibits unauthorized reproduction of this document by any means. Organizations may obtain permission to reproduce a limited number of copies by entering into a license agreement. Requests to reproduce text, data, charts, figures or other material should be made to the Consumer Technology Association (CTA).<br><br>
+</p>
+    <hr title="Separator for header">
+  </div>
+
+
+    
+    <center>Published by ©CONSUMER TECHNOLOGY ASSOCIATION 2026 <br>Technology &amp; Standards Department <br><a href="https://www.cta.tech" target="_blank">www.CTA.tech</a><br><br>
+All rights reserved<br><br></center>
+<i>This online copy of this specification is provided for informational use. The controlling version is hosted at the "Latest published version" link above. In case of any discrepancies between this version and the published version, the published version prevails.</i>
+<p></p>
+
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p>
+
+
+        This document enumerates technologies that should not be used in connected devices either because they are formally Deprecated by Acknowledged Authorities; or because they are broadly considered insecure but have not been formally Deprecated by an Acknowledged Authority.<br><br>
+        This standard was developed by the Consumer Technology Association’s R14 Cybersecurity and Privacy Management Committee.
+        This is an approved and published CTA standard document. All CTA standards are available at <a href="https://CTA.tech/Standards" target="_blank">CTA.tech/Standards</a>.
+      </p>
+    </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#scope"><bdi class="secno">1. </bdi>Scope</a></li><li class="tocline"><a class="tocxref" href="#compliance-notation"><bdi class="secno">2. </bdi>Compliance Notation</a></li><li class="tocline"><a class="tocxref" href="#definitions"><bdi class="secno">3. </bdi>Definitions</a></li><li class="tocline"><a class="tocxref" href="#formally-deprecated-technologies"><bdi class="secno">4. </bdi>Formally Deprecated Technologies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#des-data-encryption-standard"><bdi class="secno">4.1 </bdi>DES (Data Encryption Standard)</a></li><li class="tocline"><a class="tocxref" href="#dtls-1-0-datagram-transport-layer-security-version-1-0"><bdi class="secno">4.2 </bdi>DTLS 1.0 (Datagram Transport Layer Security Version 1.0)</a></li><li class="tocline"><a class="tocxref" href="#dual_ec_drbg_-dual-elliptic-curve-deterministic-random-bit-generator"><bdi class="secno">4.3 </bdi>Dual_EC_DRBG_(Dual Elliptic Curve Deterministic Random Bit Generator)</a></li><li class="tocline"><a class="tocxref" href="#md5"><bdi class="secno">4.4 </bdi>MD5</a></li><li class="tocline"><a class="tocxref" href="#rc4-rivest-cipher-4"><bdi class="secno">4.5 </bdi>RC4 (Rivest Cipher 4)</a></li><li class="tocline"><a class="tocxref" href="#sha-1-secure-hash-algorithm-1"><bdi class="secno">4.6 </bdi>SHA-1 (Secure Hash Algorithm 1)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#additional-authorities"><bdi class="secno">4.6.1 </bdi>Additional Authorities</a></li></ol></li><li class="tocline"><a class="tocxref" href="#ssl-2-0-secure-sockets-layer-version-2-0"><bdi class="secno">4.7 </bdi>SSL 2.0 (Secure Sockets Layer Version 2.0)</a></li><li class="tocline"><a class="tocxref" href="#ssl-3-0-secure-sockets-layer-version-3-0"><bdi class="secno">4.8 </bdi>SSL 3.0 (Secure Sockets Layer Version 3.0)</a></li><li class="tocline"><a class="tocxref" href="#tls-1-0-and-tls-1-1-transport-layer-security-versions-1-0-and-1-1"><bdi class="secno">4.9 </bdi>TLS 1.0 and TLS 1.1 (Transport Layer Security Versions 1.0 and 1.1)</a></li><li class="tocline"><a class="tocxref" href="#triple-data-encryption-algorithm-tdea"><bdi class="secno">4.10 </bdi>Triple Data Encryption Algorithm (TDEA)</a></li><li class="tocline"><a class="tocxref" href="#wep-wired-equivalent-privacy"><bdi class="secno">4.11 </bdi>WEP (Wired Equivalent Privacy)</a></li><li class="tocline"><a class="tocxref" href="#wpa"><bdi class="secno">4.12 </bdi>WPA</a></li><li class="tocline"><a class="tocxref" href="#tkip-temporal-key-integrity-protocol"><bdi class="secno">4.13 </bdi>TKIP (Temporal Key Integrity Protocol)</a></li><li class="tocline"><a class="tocxref" href="#android-beam-nfc-api"><bdi class="secno">4.14 </bdi>Android Beam (NFC API)</a></li><li class="tocline"><a class="tocxref" href="#zebra-ndef-nfc-data-exchange-format"><bdi class="secno">4.15 </bdi>&nbsp;Zebra NDEF (NFC Data Exchange Format)</a></li><li class="tocline"><a class="tocxref" href="#ldap-lightweight-directory-access-protocol-versions-1-and-2-ldapv1-ldapv2"><bdi class="secno">4.16 </bdi>LDAP (Lightweight Directory Access Protocol) Versions 1 and 2 (LDAPv1, LDAPv2)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#known-insecure-technologies"><bdi class="secno">5. </bdi>Known Insecure Technologies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ftp-file-transfer-protocol"><bdi class="secno">5.1 </bdi>FTP (File Transfer Protocol)</a></li><li class="tocline"><a class="tocxref" href="#irc-internet-relay-chat"><bdi class="secno">5.2 </bdi>IRC (Internet Relay Chat)</a></li><li class="tocline"><a class="tocxref" href="#telnet"><bdi class="secno">5.3 </bdi>Telnet</a></li><li class="tocline"><a class="tocxref" href="#netbios-network-basic-input-output-system"><bdi class="secno">5.4 </bdi>NetBIOS (Network Basic Input/Output System)</a></li></ol></li></ol></nav>
+
+
+
+
+
+
+<section id="scope"><div class="header-wrapper"><h2 id="x1-scope"><bdi class="secno">1. </bdi>Scope</h2><a class="self-link" href="#scope" aria-label="Permalink for Section 1."></a></div>
+<p>This document enumerates two groups of technologies that should not be used in connected devices for security reasons.</p>
+<p>The first group of technologies are those that are <em>formally Deprecated by Acknowledged Authorities</em>.</p>
+<p>The second group of technologies are those that are <em>broadly considered insecure but have not been formally Deprecated</em> by an Acknowledged Authority. This may be, for example, because there is no Acknowledged Authority that can claim ownership, or for some other reason that prevents qualifying for the Formally Deprecated Technologies list (section 4).</p>
+<p>In some cases, the addition of additional security measures, such as an appropriate version of Transport Layer Security (TLS), may be considered appropriate security for the application. For example, FTP may be combined with TLS as FTPS (FTP-SSL). However, whether this approach meets applicable security requirements is outside the scope of this document.</p>
+</section><section id="compliance-notation"><div class="header-wrapper"><h2 id="x2-compliance-notation"><bdi class="secno">2. </bdi>Compliance Notation</h2><a class="self-link" href="#compliance-notation" aria-label="Permalink for Section 2."></a></div>
+<p>CTA defines the following compliance terms for use in its documents:</p>
+<table>
+<tbody>
+<tr>
+<td width="96">
+<p><strong>should </strong></p>
+</td>
+<td width="456">
+<p>This word indicates that a certain course of action is preferred but not necessarily required.</p>
+</td>
+</tr>
+<tr>
+<td width="96">
+<p><strong>should not </strong></p>
+</td>
+<td width="456">
+<p>This phrase means a certain possibility or course of action is undesirable but not prohibited.</p>
+</td>
+</tr>
+<tr>
+<td width="96">
+<p><strong>may</strong></p>
+</td>
+<td width="456">
+<p>This phrase indicates that a certain course of action is optional.</p>
+</td>
+</tr>
+<tr>
+<td width="96">
+<p><strong>need not</strong></p>
+</td>
+<td width="456">
+<p>This phrase indicates that a certain course of action is not required (i.e., optional), and this document does not express a recommendation as to preference.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section><section id="definitions"><div class="header-wrapper"><h2 id="x3-definitions"><bdi class="secno">3. </bdi>Definitions</h2><a class="self-link" href="#definitions" aria-label="Permalink for Section 3."></a></div>
+<p><strong>Acknowledged Authority</strong>: The technology owner or standards development organization, a recognized government agency with the appropriate scope and expertise, or a significant private sector entity that has been responsible for broad deployment of the technology.</p>
+<p><strong>Deprecation</strong>: A strong statement discouraging usage in favor of alternatives.</p>
+<p><strong>Prohibited by Process Owner: </strong>Indication that certification body, customer, or platform does not permit use of the technology to connect to their system or within the products they certify.</p>
+<p><strong>Withdrawn: </strong>Indication that the body which initially issued the standard or endorsed or approved the technology has withdrawn (or revoked) such standard or ended such approval.</p>
+</section><section id="formally-deprecated-technologies"><div class="header-wrapper"><h2 id="x4-formally-deprecated-technologies"><bdi class="secno">4. </bdi>Formally Deprecated Technologies</h2><a class="self-link" href="#formally-deprecated-technologies" aria-label="Permalink for Section 4."></a></div>
+<p>These technologies are formally Deprecated by Acknowledged Authorities.</p>
+<section id="des-data-encryption-standard"><div class="header-wrapper"><h3 id="x4-1-des-data-encryption-standard"><bdi class="secno">4.1 </bdi>DES (Data Encryption Standard)</h3><a class="self-link" href="#des-data-encryption-standard" aria-label="Permalink for Section 4.1"></a></div>
+<p><u>Status</u>: Withdrawn</p>
+<p><u>Authority</u>: NIST</p>
+<p><u>Statement</u>:</p>
+<p><em>“…the DES is being withdrawn because it no longer provides the security that is needed to protect federal government information.”</em></p>
+<p><u>Reference</u>: National Institute of Standards and Technology, <em>NIST Withdraws Outdated Data Encryption Standard</em>, June 2005. <a href="http://www.nist.gov/itl/fips/060205_des.cfm">http://www.nist.gov/itl/fips/060205_des.cfm</a>.</p>
+</section><section id="dtls-1-0-datagram-transport-layer-security-version-1-0"><div class="header-wrapper"><h3 id="x4-2-dtls-1-0-datagram-transport-layer-security-version-1-0"><bdi class="secno">4.2 </bdi>DTLS 1.0 (Datagram Transport Layer Security Version 1.0)</h3><a class="self-link" href="#dtls-1-0-datagram-transport-layer-security-version-1-0" aria-label="Permalink for Section 4.2"></a></div>
+<p><u>Status</u>: Obsolete; replaced by DTLS 1.2; do not fall back to DTLS 1.0.</p>
+<p><u>Authority</u>: IETF Best Current Practice</p>
+<p><u>Statement</u><em>: </em></p>
+<p><em>“This document updates the following RFCs that normatively reference TLS 1.0, TLS 1.1, or DTLS 1.0. The update is to obsolete usage of these older versions.</em></p>
+<p><em>“…The update is to obsolete usage of these older versions. Fallback to these versions is prohibited through this update. Specific references to mandatory minimum protocol versions of TLS 1.0 or TLS 1.1 are replaced by TLS 1.2, and references to minimum protocol version DTLS 1.0 are replaced by DTLS 1.2.” </em></p>
+<p><u>Reference</u>: IETF RFC 7525, <em>Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</em>, <a href="https://www.rfc-editor.org/rfc/rfc7525.txt">https://www.rfc-editor.org/rfc/rfc7525.txt</a>, January 2024.</p>
+</section><section id="dual_ec_drbg_-dual-elliptic-curve-deterministic-random-bit-generator"><div class="header-wrapper"><h3 id="x4-3-dual_ec_drbg_-dual-elliptic-curve-deterministic-random-bit-generator"><bdi class="secno">4.3 </bdi>Dual_EC_DRBG_(Dual Elliptic Curve Deterministic Random Bit Generator)</h3><a class="self-link" href="#dual_ec_drbg_-dual-elliptic-curve-deterministic-random-bit-generator" aria-label="Permalink for Section 4.3"></a></div>
+<p><u>Status</u>: Withdrawn</p>
+<p><u>Authority</u>: NIST</p>
+<p><u>Statement</u>:</p>
+<p><em>“Based on its own evaluation, and in response to the lack of public confidence in the algorithm, NIST removed Dual_EC_DRBG from the Rev. 1 document.”</em></p>
+<p><u>Reference</u>: National Institute of Standards and Technology, <em>NIST Removes Cryptography Algorithm from Random Number Generator Recommendations</em>. April 2014. <a href="http://www.nist.gov/itl/csd/sp800-90-042114.cfm">http://www.nist.gov/itl/csd/sp800-90-042114.cfm</a>.</p>
+</section><section id="md5"><div class="header-wrapper"><h3 id="x4-4-md5"><bdi class="secno">4.4 </bdi>MD5</h3><a class="self-link" href="#md5" aria-label="Permalink for Section 4.4"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: CERT</p>
+<p><u>Statement</u>:</p>
+<p><em>“Do not use the MD5 algorithm. Software developers, Certification Authorities, website owners, and users should avoid using the MD5 algorithm in any capacity. As previous research has demonstrated, it should be considered cryptographically broken and unsuitable for further use.”</em></p>
+<p><u>Reference</u>: CERT Coordination Center, <em>MD5 vulnerable to collision attacks</em>, <a href="http://www.kb.cert.org/vuls/id/836068">http://www.kb.cert.org/vuls/id/836068</a>, January 2009.</p>
+</section><section id="rc4-rivest-cipher-4"><div class="header-wrapper"><h3 id="x4-5-rc4-rivest-cipher-4"><bdi class="secno">4.5 </bdi>RC4 (Rivest Cipher 4)</h3><a class="self-link" href="#rc4-rivest-cipher-4" aria-label="Permalink for Section 4.5"></a></div>
+<p><u>Status</u>: Deprecated (“prohibited”) for TLS/SSL</p>
+<p><u>Authority</u>: IETF Standards Track RFC</p>
+<p><u>Statement</u>:</p>
+<p><em>“Prohibiting RC4 Cipher Suites: This document requires that TLS ([RFC5246] [RFC4346] [RFC2246]) clients and servers never negotiate the use of RC4 cipher suites.”</em></p>
+<p><u>Reference</u>: IETF RFC 7465, <em>Prohibiting RC4 Cipher Suites</em>, <a href="https://www.rfc-editor.org/rfc/rfc7465.txt">https://www.rfc-editor.org/rfc/rfc7465.txt</a>.</p>
+</section><section id="sha-1-secure-hash-algorithm-1"><div class="header-wrapper"><h3 id="x4-6-sha-1-secure-hash-algorithm-1"><bdi class="secno">4.6 </bdi>SHA-1 (Secure Hash Algorithm 1)</h3><a class="self-link" href="#sha-1-secure-hash-algorithm-1" aria-label="Permalink for Section 4.6"></a></div>
+<p><u>Status:</u> Prohibited for use in digital signatures / Deprecated for other uses</p>
+<p><u>Authority</u>: NIST</p>
+<p><u>Statement: </u></p>
+<p><em>“[SHA-1 for signature generation] [d]isallowed, except where specifically allowed by NIST protocol-specific guidance.”</em></p>
+<p><u>Reference</u>: National Institute of Standards and Technology. <em>NIST Transitioning Away from SHA-1 for All Applications.</em> December 15, 2022. <a href="https://csrc.nist.gov/news/2022/nist-transitioning-away-from-sha-1-for-all-apps">https://csrc.nist.gov/news/2022/nist-transitioning-away-from-sha-1-for-all-apps</a>.</p>
+<p>National Institute of Standards and Technology.&nbsp;<em>Transitioning the Use of Cryptographic Algorithms and Key Lengths</em>. NIST SP 800-131Ar2. Gaithersburg, MD: National Institute of Standards and Technology, March 2019, p18. <a href="https://doi.org/10.6028/NIST.SP.800-131Ar2">https://doi.org/10.6028/NIST.SP.800-131Ar2</a>.&nbsp;</p>
+<section id="additional-authorities"><div class="header-wrapper"><h4 id="x4-6-1-additional-authorities"><bdi class="secno">4.6.1 </bdi>Additional Authorities</h4><a class="self-link" href="#additional-authorities" aria-label="Permalink for Section 4.6.1"></a></div>
+<p>This subsection provides additional context.</p>
+<p><u>Status</u>: Deprecated for use in newly generated X.509 certificates within the Microsoft root Certificate Authority program; see statement and reference below.</p>
+<p><u>Authority</u>: Microsoft</p>
+<p><u>Statement</u>:</p>
+<p><em>“The new policy will no longer allow root certificate authorities to issue X.509 certificates using the SHA-1 hashing algorithm for the purposes of SSL and code signing after January 1, 2016.”</em></p>
+<p><u>Reference</u>: <em>Deprecation of SHA-1 Hashing Algorithm for Microsoft Root Certificate Program</em>, <a href="https://technet.microsoft.com/library/security/2880823">https://technet.microsoft.com/library/security/2880823</a>, November 2013.</p>
+<br><p><u>Status</u>: Deprecated for Chromium handling of TLS certificates; see statement and reference below.</p>
+<p><u>Authority</u>: Google</p>
+<p><u>Statement</u>:</p>
+<p><em>“The use of SHA-1 within TLS certificates is no longer sufficiently secure. This is an intent to phase them out (in 2-3 years).”</em></p>
+<p><u>Reference</u>: <em>Intent to Deprecate: SHA-1 certificates</em>, <a href="https://groups.google.com/a/chromium.org/forum/#!msg/security-dev/2-R4XziFc7A/NDI8cOwMGRQJ">https://groups.google.com/a/chromium.org/forum/#!msg/security-dev/2-R4XziFc7A/NDI8cOwMGRQJ</a>, August 2014.</p>
+<br><p><u>Status</u>: Deprecated for use in certificates seeking to connect to Facebook; see statement and reference below.</p>
+<p><u>Authority</u>: Facebook</p>
+<p><u>Statement</u>:</p>
+<p><em>“…apps that don't support SHA-2 certificate signatures will no longer be able to connect to Facebook starting on October 1, 2015.”</em></p>
+<p><u>Reference</u>: <em>Moving to a More Secure Standard: Please Update your Apps To Support Certificates Signed with SHA-2</em>, <a href="https://developers.facebook.com/blog/post/2015/06/02/SHA-2-Updates-Needed/?_fb_noscript=1">https://developers.facebook.com/blog/post/2015/06/02/SHA-2-Updates-Needed/?_fb_noscript=1</a>, June 2015.</p>
+</section></section><section id="ssl-2-0-secure-sockets-layer-version-2-0"><div class="header-wrapper"><h3 id="x4-7-ssl-2-0-secure-sockets-layer-version-2-0"><bdi class="secno">4.7 </bdi>SSL 2.0 (Secure Sockets Layer Version 2.0)</h3><a class="self-link" href="#ssl-2-0-secure-sockets-layer-version-2-0" aria-label="Permalink for Section 4.7"></a></div>
+<p><u>Status</u>: Deprecated (“prohibited”).</p>
+<p><u>Authority</u>: IETF Standards Track RFC</p>
+<p><u>Statement</u>:</p>
+<p><em>“Prohibiting Secure Sockets Layer (SSL) Version 2.0: This document requires that when Transport Layer Security (TLS) clients and servers establish connections, they never negotiate the use of Secure Sockets Layer (SSL) version 2.0.”</em></p>
+<p><u>Reference</u>: IETF RFC 6176, <em>Prohibiting Secure Sockets Layer (SSL) Version 2.0</em>, <a href="https://tools.ietf.org/html/rfc6176">https://tools.ietf.org/html/rfc6176</a>, March 2011.</p>
+</section><section id="ssl-3-0-secure-sockets-layer-version-3-0"><div class="header-wrapper"><h3 id="x4-8-ssl-3-0-secure-sockets-layer-version-3-0"><bdi class="secno">4.8 </bdi>SSL 3.0 (Secure Sockets Layer Version 3.0)</h3><a class="self-link" href="#ssl-3-0-secure-sockets-layer-version-3-0" aria-label="Permalink for Section 4.8"></a></div>
+<p><u>Status</u>: Deprecated.</p>
+<p><u>Authority</u>: IETF Proposed Standard</p>
+<p><u>Statement</u>:</p>
+<p><em>“Deprecating Secure Sockets Layer Version 3.0: The Secure Sockets Layer version 3.0 (SSLv3), as specified in RFC 6101, is not sufficiently secure. This document requires that SSLv3 not be used.”</em></p>
+<p><u>Reference</u>: IETF RFC 7568, <a href="https://tools.ietf.org/html/rfc7568">https://tools.ietf.org/html/rfc7568</a>, June 2015.</p>
+</section><section id="tls-1-0-and-tls-1-1-transport-layer-security-versions-1-0-and-1-1"><div class="header-wrapper"><h3 id="x4-9-tls-1-0-and-tls-1-1-transport-layer-security-versions-1-0-and-1-1"><bdi class="secno">4.9 </bdi>TLS 1.0 and TLS 1.1 (Transport Layer Security Versions 1.0 and 1.1)</h3><a class="self-link" href="#tls-1-0-and-tls-1-1-transport-layer-security-versions-1-0-and-1-1" aria-label="Permalink for Section 4.9"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: IETF Best Current Practice</p>
+<p><u>Statement</u>:</p>
+<p><em>“This document formally deprecates Transport Layer Security (TLS) versions 1.0 (RFC 2246) and 1.1 (RFC 4346). Accordingly, those documents have been moved to Historic status. These versions lack support for current and recommended cryptographic algorithms and mechanisms, and various government and industry profiles of applications using TLS now mandate avoiding these old TLS versions.</em></p>
+<p><em>“…The update is to obsolete usage of these older versions. Fallback to these versions is prohibited through this update. Specific references to mandatory minimum protocol versions of TLS 1.0 or TLS 1.1 are replaced by TLS 1.2, and references to minimum protocol version DTLS 1.0 are replaced by DTLS 1.2.” </em></p>
+<p><u>Reference</u>: IETF RFC 7525, <em>Deprecating Secure Sockets Layer Version 3.0</em>, <a href="https://www.rfc-editor.org/rfc/rfc7525.txt">https://www.rfc-editor.org/rfc/rfc7525.txt</a>, January 2024.</p>
+</section><section id="triple-data-encryption-algorithm-tdea"><div class="header-wrapper"><h3 id="x4-10-triple-data-encryption-algorithm-tdea"><bdi class="secno">4.10 </bdi>Triple Data Encryption Algorithm (TDEA)</h3><a class="self-link" href="#triple-data-encryption-algorithm-tdea" aria-label="Permalink for Section 4.10"></a></div>
+<p><u>Status</u>: Withdrawn</p>
+<p><u>Authority</u>: NIST</p>
+<p><u>Statement</u>:</p>
+<p><em>“The scheduled withdrawal of SP 800-67 Rev. 2 will signify that TDEA is no longer an approved block cipher.”</em></p>
+<p><u>Reference</u>: National Institute of Standards and Technology. <em>NIST to Withdraw Special Publication 800-67 Revision 2 | CSRC</em>; June 29, 2023. <a href="https://csrc.nist.gov/news/2023/nist-to-withdraw-sp-800-67-rev-2">https://csrc.nist.gov/news/2023/nist-to-withdraw-sp-800-67-rev-2</a>. Notice of the withdrawal going into effect is available at <a href="https://doi.org/10.6028/NIST.SP.800-67r2">https://doi.org/10.6028/NIST.SP.800-67r2</a>.</p>
+</section><section id="wep-wired-equivalent-privacy"><div class="header-wrapper"><h3 id="x4-11-wep-wired-equivalent-privacy"><bdi class="secno">4.11 </bdi>WEP (Wired Equivalent Privacy)</h3><a class="self-link" href="#wep-wired-equivalent-privacy" aria-label="Permalink for Section 4.11"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: IEEE</p>
+<p><u>Statement</u>:</p>
+<p><em>“This amendment retains the WEP feature for purposes of backwards compatibility with existing IEEE 802.11 devices, but WEP is deprecated in favor of the new security features provided in this amendment.”</em></p>
+<p><u>Reference</u>: IEEE 802.11i-2004, Amendment 6 to IEEE Std 802.11-1999; <a href="https://standards.ieee.org/ieee/802.11i/3127/">https://standards.ieee.org/ieee/802.11i/3127/</a>.</p>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: Wi-Fi Alliance</p>
+<p><u>Statement</u>:</p>
+<p><em>“TKIP is an older security technology with known vulnerabilities to some cryptographic attacks. TKIP and WEP use the same underlying cipher, and, consequently, they are vulnerable to a number of similar attacks. TKIP was designed as a transitional mechanism in 2004 for devices equipped with WEP and unable to support AES. Due to the known vulnerabilities of TKIP, networks utilizing it may be more susceptible to attack.”</em></p>
+<p><u>Reference</u>: Wi-Fi Alliance, <em>Technical Note: Removal of TKIP from WiFi Devices</em>, v. 1.0, March 15, 2015. Available at <a href="https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf">https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf</a></p>
+</section><section id="wpa"><div class="header-wrapper"><h3 id="x4-12-wpa"><bdi class="secno">4.12 </bdi>WPA</h3><a class="self-link" href="#wpa" aria-label="Permalink for Section 4.12"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: Wi-Fi Alliance</p>
+<p><u>Statement</u>:</p>
+<p><em>“WPA, which uses Temporal Key Integrity Protocol (TKIP), no longer provides sufficient security to protect consumer or enterprise Wi-Fi® networks.”</em></p>
+<p><u>Reference</u>: Wi-Fi Alliance, <em>Technical Note: Removal of TKIP from WiFi Devices</em>, v. 1.0, March 15, 2015. Available at <a href="https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf">https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf</a></p>
+</section><section id="tkip-temporal-key-integrity-protocol"><div class="header-wrapper"><h3 id="x4-13-tkip-temporal-key-integrity-protocol"><bdi class="secno">4.13 </bdi>TKIP (Temporal Key Integrity Protocol)</h3><a class="self-link" href="#tkip-temporal-key-integrity-protocol" aria-label="Permalink for Section 4.13"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: Wi-Fi Alliance</p>
+<p><u>Statement</u>:</p>
+<p><em>“TKIP is an older security technology with known vulnerabilities to some cryptographic attacks. TKIP and WEP use the same underlying cipher, and, consequently, they are vulnerable to a number of similar attacks.”</em></p>
+<p><u>Reference</u>: Wi-Fi Alliance, <em>Technical Note: Removal of TKIP from WiFi Devices</em>, v. 1.0, March 15, 2015. Available at <a href="https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf">https://www.wi-fi.org/system/files/Wi-Fi_Alliance_Technical_Note_TKIP_v1.0.pdf</a></p>
+</section><section id="android-beam-nfc-api"><div class="header-wrapper"><h3 id="x4-14-android-beam-nfc-api"><bdi class="secno">4.14 </bdi>Android Beam (NFC API)</h3><a class="self-link" href="#android-beam-nfc-api" aria-label="Permalink for Section 4.14"></a></div>
+<p><u>Status</u>: Deprecated.</p>
+<p><u>Authority</u>: Google</p>
+<p><u>Statement</u>:</p>
+<p><em>“In Android&nbsp;10 we're officially deprecating Android Beam, an older feature for initiating data sharing across devices through Near Field Communication (NFC).”</em></p>
+<p><u>Reference</u>: Android Developers, <a href="https://developer.android.com/about/versions/10/behavior-changes-all#beam-deprecation">https://developer.android.com/about/versions/10/behavior-changes-all#beam-deprecation</a>.</p>
+</section><section id="zebra-ndef-nfc-data-exchange-format"><div class="header-wrapper"><h3 id="x4-15-zebra-ndef-nfc-data-exchange-format"><bdi class="secno">4.15 </bdi>&nbsp;Zebra NDEF (NFC Data Exchange Format)</h3><a class="self-link" href="#zebra-ndef-nfc-data-exchange-format" aria-label="Permalink for Section 4.15"></a></div>
+<p><u>Status</u>: Deprecated</p>
+<p><u>Authority</u>: Zebra</p>
+<p><u>Statement</u>:</p>
+<p><em>“Note: DEPRECATED; control of this feature by NFC Manager will be discontinued in a future release. Supported only on MC93, TC52, TC57, TC72, TC77 and TC8380 devices.”</em></p>
+<p><u>Reference</u>: Zebra Tech Docs, <a href="https://techdocs.zebra.com/mx/nfcmgr/">https://techdocs.zebra.com/mx/nfcmgr/</a>.</p>
+</section><section id="ldap-lightweight-directory-access-protocol-versions-1-and-2-ldapv1-ldapv2"><div class="header-wrapper"><h3 id="x4-16-ldap-lightweight-directory-access-protocol-versions-1-and-2-ldapv1-ldapv2"><bdi class="secno">4.16 </bdi>LDAP (Lightweight Directory Access Protocol) Versions 1 and 2 (LDAPv1, LDAPv2)</h3><a class="self-link" href="#ldap-lightweight-directory-access-protocol-versions-1-and-2-ldapv1-ldapv2" aria-label="Permalink for Section 4.16"></a></div>
+<p><u>Status</u>: LDAPv1 is Obsolete per RFC 1777 and RFC 3494. LDAPv2 is Historic per RFC 3494</p>
+<p><u>Authority</u>: IETF</p>
+<p><u>Statement</u>:</p>
+<p><em>“…LDAPv2 does not provide adequate security features for use on the Internet. LDAPv2 does not provide any mechanism for data integrity or confidentiality. LDAPv2 does not support modern authentication mechanisms such as those based on DIGEST-MD5, Kerberos V, and X.509 public keys.”</em></p>
+<p><em>“Developers should not implement LDAPv2 per [LDAPv1] RFC 1777, as such would result in an implementation that will not interoperate with existing LDAPv2 implementations. Developers should implement LDAPv3 instead.”</em></p>
+<p><u>Reference</u>:</p>
+<p>IETF RFC 3494, <em>Lightweight Directory Access Protocol version 2 (LDAPv2) to Historic Status</em>, <a href="https://www.rfc-editor.org/rfc/rfc3494.html">https://www.rfc-editor.org/rfc/rfc3494.html</a>.</p>
+<p>IETF RFC 4511, <em>Lightweight Directory Access Protocol (LDAP): The Protocol</em>, <a href="https://www.rfc-editor.org/rfc/rfc4511.html">https://www.rfc-editor.org/rfc/rfc4511.html</a>.</p>
+</section></section><section id="known-insecure-technologies"><div class="header-wrapper"><h2 id="x5-known-insecure-technologies"><bdi class="secno">5. </bdi>Known Insecure Technologies</h2><a class="self-link" href="#known-insecure-technologies" aria-label="Permalink for Section 5."></a></div>
+<p>The technologies listed in this section are known to be insecure, and therefore should not be used alone, but may be made secure for use with secure extensions, or over a link secured by other means.</p>
+<p>An IoT product should not use a technology that is considered insecure (for example, technologies with known Common Vulnerabilities and Exposures or cryptographic algorithms/parameters with known vulnerabilities), and manufacturers should attempt to identify and eliminate such out-of-date or compromised technologies from their product line. In addition, unless compensating controls are applied, an IoT product should not use outdated and potentially insecure protocols such as:</p>
+<section id="ftp-file-transfer-protocol"><div class="header-wrapper"><h3 id="x5-1-ftp-file-transfer-protocol"><bdi class="secno">5.1 </bdi>FTP (File Transfer Protocol)</h3><a class="self-link" href="#ftp-file-transfer-protocol" aria-label="Permalink for Section 5.1"></a></div>
+<p>FTP implements unencrypted data transfers including credentials, does not verify integrity of transferred files, and is vulnerable to man-in-the-middle attacks.</p>
+<p>Alternatives include SSH FTP (known as “SFTP” or “Secure FTP”) and FTP over TLS (known as “FTPS”, “FTP-SSL” or “FTP Secure”).</p>
+</section><section id="irc-internet-relay-chat"><div class="header-wrapper"><h3 id="x5-2-irc-internet-relay-chat"><bdi class="secno">5.2 </bdi>IRC (Internet Relay Chat)</h3><a class="self-link" href="#irc-internet-relay-chat" aria-label="Permalink for Section 5.2"></a></div>
+<p>IRC is a public instant messaging system that implements unencrypted data transfers including credentials.</p>
+<p>Alternatives include Matrix and Extensible Messaging and Presence Protocol (XMPP).</p>
+</section><section id="telnet"><div class="header-wrapper"><h3 id="x5-3-telnet"><bdi class="secno">5.3 </bdi>Telnet</h3><a class="self-link" href="#telnet" aria-label="Permalink for Section 5.3"></a></div>
+<p>Telnet implements unencrypted data transfers including credentials.</p>
+<p>Alternatives include Secure Shell (SSH).</p>
+</section><section id="netbios-network-basic-input-output-system"><div class="header-wrapper"><h3 id="x5-4-netbios-network-basic-input-output-system"><bdi class="secno">5.4 </bdi>NetBIOS (Network Basic Input/Output System)</h3><a class="self-link" href="#netbios-network-basic-input-output-system" aria-label="Permalink for Section 5.4"></a></div>
+<p>NetBIOS may be desirable for an IoT device that should be discoverable by Windows machines. However, NetBIOS has multiple potential vulnerabilities including enumeration, name service spoofing, name query poisoning, and man-in-the-middle attacks.</p>
+<p>Alternatives include DNS and SMBv2/v3.</p>
+
+
+
+
+<br><br><br><p><strong></strong></p><center><strong>Consumer Technology Association Document Improvement Proposal</strong></center><p></p>
+<p>If in the review or use of this document a potential change is made evident for safety, health or technical reasons, please email your reason/rationale for the recommended change to <a href="mailto:standards@CTA.tech">standards@CTA.tech</a>.</p>
+<p></p><center>Consumer Technology Association<br>
+Technology &amp; Standards Department<br>
+1919 S Eads Street, Arlington, VA 22202<br>
+FAX: (703) 907-7693<br>
+<a href="mailto:standards@CTA.tech">standards@CTA.tech</a></center><p></p><a href="mailto:standards@CTA.tech">
+
+
+
+    
+
+  
+</a></section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
+// @ts-check
+
+if (document.respec) {
+  document.respec.ready.then(setupVarHighlighter);
+} else {
+  setupVarHighlighter();
+}
+
+function setupVarHighlighter() {
+  document
+    .querySelectorAll("var")
+    .forEach(varElem => varElem.addEventListener("click", highlightListener));
+}
+
+/**
+ * @param {MouseEvent} ev
+ */
+function highlightListener(ev) {
+  ev.stopPropagation();
+  const varElem = /** @type {HTMLElement} */ (ev.target);
+  const hightligtedElems = highlightVars(varElem);
+  const resetListener = () => {
+    const hlColor = getHighlightColor(varElem);
+    hightligtedElems.forEach(el => removeHighlight(el, hlColor));
+    [...HL_COLORS.keys()].forEach(key => HL_COLORS.set(key, true));
+  };
+  if (hightligtedElems.length) {
+    document.body.addEventListener("click", resetListener, { once: true });
+  }
+}
+
+// availability of highlight colors. colors from var.css
+const HL_COLORS = new Map([
+  ["respec-hl-c1", true],
+  ["respec-hl-c2", true],
+  ["respec-hl-c3", true],
+  ["respec-hl-c4", true],
+  ["respec-hl-c5", true],
+  ["respec-hl-c6", true],
+  ["respec-hl-c7", true],
+]);
+
+/**
+ * @param {HTMLElement} target
+ */
+function getHighlightColor(target) {
+  // return current colors if applicable
+  const { value } = target.classList;
+  const re = /respec-hl-\w+/;
+  const activeClass = re.test(value) && value.match(re);
+  if (activeClass) return activeClass[0];
+
+  // first color preference
+  if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
+
+  // otherwise get some other available color
+  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+}
+
+/**
+ * @param {HTMLElement} varElem
+ */
+function highlightVars(varElem) {
+  const textContent = norm(varElem.textContent);
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
+  const highlightColor = getHighlightColor(varElem);
+
+  const varsToHighlight = [...parent.querySelectorAll("var")].filter(
+    el =>
+      norm(el.textContent) === textContent &&
+      el.closest(".algorithm, section") === parent
+  );
+
+  // update availability of highlight color
+  const colorStatus = varsToHighlight[0].classList.contains("respec-hl");
+  HL_COLORS.set(highlightColor, colorStatus);
+
+  // highlight vars
+  if (colorStatus) {
+    varsToHighlight.forEach(el => removeHighlight(el, highlightColor));
+    return [];
+  } else {
+    varsToHighlight.forEach(el => addHighlight(el, highlightColor));
+  }
+  return varsToHighlight;
+}
+
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
+function removeHighlight(el, highlightColor) {
+  el.classList.remove("respec-hl", highlightColor);
+  // clean up empty class attributes so they don't come in export
+  if (!el.classList.length) el.removeAttribute("class");
+}
+
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
+function addHighlight(elem, highlightColor) {
+  elem.classList.add("respec-hl", highlightColor);
+}
+
+/**
+ * Same as `norm` from src/core/utils, but our build process doesn't allow
+ * imports in runtime scripts, so duplicated here.
+ * @param {string} str
+ */
+function norm(str) {
+  return str.trim().replace(/\s+/g, " ");
+}
+})()</script><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement | null} */
+  let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement | null} */
+        const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement | null} */
+    const caret = panel.querySelector(".caret");
+    if (caret) caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement | null} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
